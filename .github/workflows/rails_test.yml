@@ -61,6 +61,7 @@ jobs:
 
     - name: Prepare database
       run: |
+        service mysql start
         bundle exec rails db:create db:schema:load --trace
 
     - name: Run rubocop
