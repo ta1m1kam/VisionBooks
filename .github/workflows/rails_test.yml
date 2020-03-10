@@ -24,7 +24,7 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Prepare bundler
       run: |
         gem install bundler
@@ -36,13 +36,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Prepare yarn
-      run: |
-        yarn install
+      run: yarn install
 
     - name: Prepare database
       run: |
         bin/rails db:create
-        bin/raild db:schema:load
+        bin/raild db:migrate
 
     - name: Run rubocop
       run: |
