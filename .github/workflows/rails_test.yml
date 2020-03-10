@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       image: mysql:5.7
+      ports:
+      - 3306
+      options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     container:
       image: ruby:2.6.3
@@ -39,6 +42,11 @@ jobs:
       run: |
         npm install -g yarn
         yarn install
+
+    - name: Verify MySQL connection from host
+      run: |
+        sudo apt-get install -y mysql-client
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -ppassword -e "SHOW DATABASES"
 
     - name: Prepare database
       run: |
