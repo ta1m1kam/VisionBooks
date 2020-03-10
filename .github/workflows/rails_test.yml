@@ -16,7 +16,7 @@ jobs:
     container:
       image: ruby:2.6.3
       env:
-        RAILD_ENV: test
+        RAILS_ENV: test
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
     strategy:
