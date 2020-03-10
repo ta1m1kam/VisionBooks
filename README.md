@@ -1,24 +1,30 @@
-# README
+# 開発環境準備
+1. Dockerをインストール
+2. リポジトリをクローン
+3. setup.sh
+以下のコマンドでDocker Imageをビルドします。
+```
+$ ./setup.sh
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+4. サーバーを立ち上げる
+```
+$ docker-compose up
+```
 
-Things you may want to cover:
+### 困ったら
+#### yarn installしたい
+```
+$ docker-compose run web yarn install
+```
 
-* Ruby version
+#### DBを作成したい
+```
+$ docker-compose run web rails db:create
+```
 
-* System dependencies
+#### Migrationしたい
+```
+$ docker-compose run web rails db:migrate
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
