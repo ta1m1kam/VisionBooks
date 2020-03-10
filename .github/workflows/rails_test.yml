@@ -26,6 +26,10 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
 
+    - name: Prepare yarn
+      run: |
+        yarn install --check-files
+
     - name: Prepare database
       run: |
         bin/rails db:create
