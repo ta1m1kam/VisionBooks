@@ -29,14 +29,18 @@ jobs:
       uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
 
     - name: Prepare bundler
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+
+    - name: Cache node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: yarn-${{ hashFiles('**/yarn.lock') }}
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
