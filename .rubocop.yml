@@ -30,3 +30,7 @@ Style/Documentation:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 114
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
