@@ -58,14 +58,10 @@ jobs:
         mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -ppassword -e "SHOW DATABASES"
 
     - name: Prepare database
-      run: |
-        bin/rails db:create
-        bin/raild db:migrate
+      run: bundle exec rails db:create db:schema:load --trace
 
     - name: Run rubocop
-      run: |
-        rubocop
+      run: bundle exec rubocop
 
     - name: Run rspec
-      run: |
-        rspec
+      run: bundle exec rspec
