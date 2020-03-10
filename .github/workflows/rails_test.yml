@@ -19,10 +19,6 @@ jobs:
         RAILD_ENV: test
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Prepare bundler
@@ -30,10 +26,10 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
 
-    - name: Run tests with ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Run yarn install
+    - uses: borales/actions-yarn@v2.0.0
       with:
-        node-version: ${{ matrix.node-version }}
+        cmd: install
 
     - name: Prepare yarn
       run: yarn install
