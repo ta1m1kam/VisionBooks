@@ -26,6 +26,13 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
 
+    - name: Set up yarn and node
+      run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+        curl -sL https://deb.nodesource.com/setup_12.x | bash -
+        apt install -y yarn nodejs
+
     - name: Prepare yarn
       run: |
         yarn install --check-files
@@ -35,6 +42,10 @@ jobs:
         bin/rails db:create
         bin/raild db:schema:load
 
-    - name: Run test
+    - name: Run rubocop
       run: |
         rubocop
+
+    - name: Run rspec
+      run: |
+        rspec
