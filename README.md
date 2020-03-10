@@ -1,3 +1,5 @@
+![RailsTest](https://github.com/TaigaMikami/VisionBooks/workflows/RailsTest/badge.svg)
+
 # 開発環境準備
 1. Dockerをインストール
 2. リポジトリをクローン
