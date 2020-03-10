@@ -10,8 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      image: mysql:5.7
 
     container:
       image: ruby:2.6.3
