@@ -27,4 +27,17 @@ $ docker-compose run web rails db:create
 ```
 $ docker-compose run web rails db:migrate
 ```
+### 注意点
+#### mergeされたら
+```
+$ git pull origin develop
+```
+#### mergeされたら
+```
+$ git rebase develop
+```
+#### db変更したら
+```
+$ docker-compose run web rails db:migrate
+```
 
