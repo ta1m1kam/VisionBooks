@@ -10,13 +10,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     services:
-      image: mysql:5.7
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     container:
       image: ruby:2.6.3
       env:
-        RAILD_ENV: test
+        RAILS_ENV: test
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
     strategy:
@@ -25,10 +30,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Cache bundle directory
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+
     - name: Prepare bundler
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+
+    - name: Cache node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: yarn-${{ hashFiles('**/yarn.lock') }}
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -40,20 +57,15 @@ jobs:
         npm install -g yarn
         yarn install
 
-    - name: Verify MySQL connection from host
-      run: |
-        sudo apt-get install -y mysql-client
-        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -ppassword -e "SHOW DATABASES"
+    - name: set database.yml
+      run: cp -v config/database.ci.yml config/database.yml
 
     - name: Prepare database
       run: |
-        bin/rails db:create
-        bin/raild db:migrate
+        bundle exec rails db:create db:schema:load --trace
 
     - name: Run rubocop
-      run: |
-        rubocop
+      run: bundle exec rubocop
 
     - name: Run rspec
-      run: |
-        rspec
+      run: bundle exec rspec
