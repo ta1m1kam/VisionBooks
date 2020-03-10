@@ -24,6 +24,19 @@ Style/Documentation:
     - 'app/**/*'
     - 'config/**/*'
 
+# For rubocop 
+Style/HashEachMethods:
+  Enabled: true
+
+# For rubocop  
+Style/HashTransformKeys:
+  Enabled: true
+
+# For rubocop 
+Style/HashTransformValues:
+  Enabled: true
+
+
 # Offense count: 30
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
@@ -34,3 +47,4 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
+
