@@ -19,6 +19,10 @@ jobs:
         RAILD_ENV: test
         MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     - uses: actions/checkout@v2
     - name: Prepare bundler
@@ -26,16 +30,14 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
 
-    - name: Set up yarn and node
-      run: |
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-        curl -sL https://deb.nodesource.com/setup_12.x | bash -
-        apt install -y yarn nodejs
+    - name: Run tests with ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
 
     - name: Prepare yarn
       run: |
-        yarn install --check-files
+        yarn install
 
     - name: Prepare database
       run: |
