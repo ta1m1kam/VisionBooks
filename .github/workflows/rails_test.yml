@@ -1,0 +1,33 @@
+name: RailsTest
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      image: mysql:5.7
+      ports:
+        - 3306:3306
+        -
+    container:
+      image: ruby:2.6.3
+      env:
+        RAILD_ENV: test
+        MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Prepare bundler
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Prepare database
+      run: |
+        bin/rails db:create
+        bin/raild db:schema:load
+
+    - name: Run test
+      run: |
+        rubocop
