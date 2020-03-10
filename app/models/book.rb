@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-    has_many :place
+  belogs_to :place
 end
