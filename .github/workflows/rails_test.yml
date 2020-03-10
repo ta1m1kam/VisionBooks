@@ -52,10 +52,8 @@ jobs:
         npm install -g yarn
         yarn install
 
-    - name: Verify MySQL connection from host
-      run: |
-        apt-get install -y mysql-client
-        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -ppassword -e "SHOW DATABASES"
+    - name: set database.yml
+      run: cp -v config/database.ci.yml config/database.yml
 
     - name: Prepare database
       run: bundle exec rails db:create db:schema:load --trace
