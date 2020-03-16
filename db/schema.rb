@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20_200_310_085_829) do
     t.integer 'page_count'
     t.text 'description'
     t.text 'textship'
-    t.integer 'place_id'
+    t.bigint 'place_id_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index ['place_id_id'], name: 'index_books_on_place_id_id'
   end
 
   create_table 'places', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
