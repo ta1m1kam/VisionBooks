@@ -1,5 +1,6 @@
 
 <div class="row mt-5 d-flex">
+	<%= paginate @books %>
 	<% @books.each do |book| %>
 		<div class="book text-center">
 			<%= link_to book_path(book) do %>
