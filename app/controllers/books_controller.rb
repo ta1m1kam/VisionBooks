@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  before_action :set_book, only: %i[show]
+
   def new
     @places = Place.all
     @book = Book.new
   end
 
   def index
-    @book = Book.new(book_params)
+    @books = Book.order(:title).page params[:page]
   end
 
   def show; end
@@ -26,5 +28,9 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :author, :isbn, :image_url, :publish_date,
                                  :publisher, :page_count, :textship, :description, :place_id)
+  end
+
+  def set_book
+    @book = Book.find(params[:id])
   end
 end

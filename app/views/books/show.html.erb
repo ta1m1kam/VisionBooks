@@ -1,1 +1,40 @@
-<h1>show</h1>
+<h1 class="mt-5 text-center"><%= @book.title %></h1>
+<div class="text-center mt-4 mb-4">
+  <img src="<%= @book.image_url %>" alt="">
+</div>
+<table class="table">
+  <thread>
+    <th scope="col">項目</th>
+    <th scope="col">内容</th>
+  </thread>
+  <tbody>
+    <tr>
+      <th scope="row">場所</th>
+      <td><%= @book.place.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">著者</th>
+      <td><%= @book.author %></td>
+    </tr>
+    <tr>
+      <th scope="row">説明</th>
+      <td><%= @book.description %></td>
+    </tr>
+    <tr>
+      <th scope="row">出版社</th>
+      <td><%= @book.publisher %></td>
+    </tr>
+    <tr>
+      <th scope="row">出版日</th>
+      <td><%= @book.publish_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">ページ数</th>
+      <td><%= @book.page_count %></td>
+    </tr>
+    <tr>
+      <th scope="row">Textship</th>
+      <td><%= @book.textship %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,2 +1,11 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+
+<div class="row mt-5 d-flex">
+	<% @books.each do |book| %>
+		<div class="book text-center">
+			<%= link_to book_path(book) do %>
+				<img src="<%= book.image_url %>" alt="">
+				<p><strong><%= book.title %></strong></p>
+			<% end %>
+		</div>
+	<% end %>
+</div>
