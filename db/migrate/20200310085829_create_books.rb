@@ -12,7 +12,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.integer :page_count
       t.text :description
       t.text :textship
-      t.references :place_id
+      t.references :place
 
       t.timestamps
     end
