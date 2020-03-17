@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">書籍一覧</a>
+        <%= link_to '書籍一覧', books_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">書籍登録</a>
+        <%= link_to '書籍登録', new_book_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
