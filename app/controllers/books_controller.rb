@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   def new
     @places = Place.all
@@ -11,7 +13,6 @@ class BooksController < ApplicationController
   def show; end
 
   def create
-    binding.pry
     @book = Book.new(book_params)
     if @book.save
       redirect_to @book
@@ -20,10 +21,10 @@ class BooksController < ApplicationController
     end
   end
 
-
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :image_url, :publish_date, :publisher, :page_count, :textship, :description, :place_id)
+    params.require(:book).permit(:title, :author, :isbn, :image_url, :publish_date,
+                                 :publisher, :page_count, :textship, :description, :place_id)
   end
 end
