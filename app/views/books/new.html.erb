@@ -1,2 +1,7 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<div class="container mt-5">
+  <h1 class="text-center">書籍登録</h1>
+
+  <%= form_with(model: @book, local: true) do |f| %>
+    <%= react_component("BooksForm", { book: @book, places: @places }) %>
+  <% end %>
+</div>

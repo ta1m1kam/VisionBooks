@@ -6,3 +6,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if Place.all.empty?
+  Place.create(name: '実験ブース本棚')
+  Place.create(name: '学生ブース')
+  Place.create(name: '溝上先生部屋')
+end
