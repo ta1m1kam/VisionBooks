@@ -89,7 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     inputStream : {
       name : "Live",
       type : "LiveStream",
-      target: document.querySelector('#yourElement')    // Or '#yourElement' (optional)
+      constraints: {
+        width: 452,
+        height: 350,
+      },
+      target: document.querySelector('#interactive')    // Or '#yourElement' (optional)
     },
     decoder : {
       readers : ["ean_reader"]
@@ -105,7 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Quagga.onDetected(success => {
     const code = success.codeResult.code;
-    if(calc(code)) alert(code);
+    if(calc(code)) {
+      $("#book_isbn").val(code);
+    }
   })
 
   const calc = isbn => {
