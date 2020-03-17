@@ -7,6 +7,7 @@ ruby '2.6.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 gem 'mysql2', '>= 0.4.4'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
@@ -14,7 +15,6 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'webpacker', '~> 4.0'
-gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
