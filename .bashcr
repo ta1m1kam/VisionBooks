@@ -1,3 +1,0 @@
-alias cdvisionbooks='cd ~/ruby/environment/VisionBooks'
-alias dc='docker-compose'
-alias be='bundle exec'

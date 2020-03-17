@@ -36,10 +36,6 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
-#For rubocop
-Layout/ExtraSpacing:
-  Enabled: false
-
 # Offense count: 30
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
