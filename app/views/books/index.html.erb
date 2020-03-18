@@ -1,0 +1,12 @@
+
+<div class="row mt-5 d-flex">
+	<%= paginate @books %>
+	<% @books.each do |book| %>
+		<div class="book text-center">
+			<%= link_to book_path(book) do %>
+				<img src="<%= book.image_url %>" alt="">
+				<p><strong><%= book.title %></strong></p>
+			<% end %>
+		</div>
+	<% end %>
+</div>
