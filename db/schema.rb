@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_03_22_064926) do
 
-ActiveRecord::Schema.define(version: 20_200_317_055_616) do
-  create_table 'books', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4', force: :cascade do |t|
-    t.string 'title', null: false
-    t.string 'author', null: false
-    t.integer 'isbn'
-    t.string 'image_url'
-    t.string 'publish_date'
-    t.string 'publisher'
-    t.integer 'page_count'
-    t.text 'description'
-    t.text 'textship'
-    t.bigint 'place_id'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['place_id'], name: 'index_books_on_place_id'
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.integer "isbn"
+    t.string "image_url"
+    t.string "publish_date"
+    t.string "publisher"
+    t.integer "page_count"
+    t.text "description"
+    t.text "textship"
+    t.bigint "place_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_books_on_place_id"
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20_200_317_055_616) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
