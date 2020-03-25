@@ -24,15 +24,15 @@ Style/Documentation:
     - 'app/**/*'
     - 'config/**/*'
 
-# For rubocop 
+# For rubocop
 Style/HashEachMethods:
   Enabled: true
 
-# For rubocop  
+# For rubocop
 Style/HashTransformKeys:
   Enabled: true
 
-# For rubocop 
+# For rubocop
 Style/HashTransformValues:
   Enabled: true
 
@@ -48,3 +48,6 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/**/*'
