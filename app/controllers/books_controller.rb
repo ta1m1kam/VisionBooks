@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   def show; end
 
   def create
-    binding.pry
     @book = Book.new(book_params)
     if @book.save
       redirect_to @book
