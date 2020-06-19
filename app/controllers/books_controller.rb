@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   def new
     @places = Place.all
     @book = Book.new
+    @user = current_user
   end
 
   def index
@@ -29,8 +30,8 @@ class BooksController < ApplicationController
   def update
     @user = current_user
     @book = Book.find(params[:id])
-    if @book.update_attributes(textship: @user.name)
-      flash[:success] = "Rental updated"
+    if @book.update_attributes(last_rental: @user.name)
+      flash[:success] = 'Rental updated'
       redirect_to @book
     else
       render 'show'
@@ -47,7 +48,6 @@ class BooksController < ApplicationController
   def textship_params
     params.permit(:textship)
   end
-
 
   def set_book
     @book = Book.find(params[:id])
