@@ -5,7 +5,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
     create_table :books do |t|
       t.string :title, null: false
       t.string :auther, null: false
-      t.integer :isbn
+      t.integer :isbn, limit: 5
       t.string :image_url
       t.string :publish_date
       t.string :publisher
