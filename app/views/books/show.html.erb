@@ -1,6 +1,13 @@
 <h1 class="mt-5 text-center"><%= @book.title %></h1>
 <div class="text-center mt-4 mb-4">
   <img src="<%= @book.image_url %>" alt="">
+  <%= form_with model: @book ,local: true do |f| %>
+　　　　<div class="form-group">
+				<%= f.label :textship, class: 'bmd-label-floating' %>
+				<%= @user.name %>
+			</div>
+　　　　<%= f.submit "借りる", class: "btn btn-primary" %>
+　<% end %>
 </div>
 <table class="table">
   <thread>
