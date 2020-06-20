@@ -1,13 +1,24 @@
 <h1 class="mt-5 text-center"><%= @book.title %></h1>
 <div class="text-center mt-4 mb-4">
   <img src="<%= @book.image_url %>" alt="">
+  <%= form_with model: @book ,local: true do |f| %>
+　　　　<div class="form-group">
+				<%= f.label :last_rental, class: 'bmd-label-floating' %>
+				<%= @user.name %>
+			</div>
+　　　　<%= f.submit "借りる", class: "btn btn-primary" %>
+　<% end %>
 </div>
 <table class="table">
-  <thread>
+　<thread>
     <th scope="col">項目</th>
     <th scope="col">内容</th>
   </thread>
   <tbody>
+    <tr>
+      <th scope="row">最後に借りた人</th>
+      <td><%= @book.last_rental %></td>
+    </tr>
     <tr>
       <th scope="row">場所</th>
       <td><%= @book.place.name %></td>
@@ -38,3 +49,5 @@
     </tr>
   </tbody>
 </table>
+<%= link_to "削除", @book, method: :delete,
+                                  data: { confirm: "You sure?" } %>

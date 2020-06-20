@@ -20,7 +20,7 @@
 
 			<div class="form-group">
 				<%= f.label :place_id , class: 'bmd-label-floating' %>
-				<%= f.collection_select :place_id, Place.all, :id, :name, prompt: "", class: 'form-control' %>
+				<%= f.collection_select :place_id, Place.all, :id, :name, prompt:true, class: 'form-control' %>
 			</div>
 			<div class="form-group">
 				<%= f.label :title, class: 'bmd-label-floating' %>
@@ -55,3 +55,4 @@
 		<% end %>
 	</div>
 </div>
+
