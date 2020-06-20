@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
+  get 'books/index'
+  get 'books/new'
   root 'static_pages#home'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
