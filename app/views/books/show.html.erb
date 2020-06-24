@@ -1,6 +1,6 @@
 <h1 class="mt-5 text-center"><%= @book.title %></h1>
 <div class="text-center mt-4 mb-4">
-  <img src="<%= @book.image_url %>" alt="">
+  <img src="<%= @book.image_url %>" alt=""　height="130">
   <%= form_with model: @book ,local: true do |f| %>
 　　　　<div class="form-group">
 				<%= f.label :last_rental, class: 'bmd-label-floating' %>
