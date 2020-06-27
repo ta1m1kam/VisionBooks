@@ -1,6 +1,5 @@
 <p>全書籍数:<%= @books_count %></p>
-<input type="from" id="form" placeholder="書籍名を入力してください" style="width: 250px;" />
-
+<input class="form-control mr-sm-2" type="form" id="form" placeholder="Search" aria-label="Search" style="width: 200px;">
 <ul id="result">
 </ul>
 
@@ -41,7 +40,23 @@ $(document).on('keyup', '#form', function(e){
 		});
 	})
 
-	}
+	}else{
+
+    $.ajax({
+    url: '/books/search',
+		type: 'GET',
+    data: ('keyword=' + input),
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+	})
+		
+  .done(function(data){
+    $('#result').find('a').remove();
+    $('#result').find('br').remove();
+	})
+
+  }
 
 });
 });
