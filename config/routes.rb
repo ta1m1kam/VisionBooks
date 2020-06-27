@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/about', to: 'static_pages#about'
-  resources :books
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
   resources :users
 end

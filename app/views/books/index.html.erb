@@ -1,3 +1,8 @@
+<p>全書籍数:<%= @books_count %></p>
+<input type="from" id="form" placeholder="書籍名を入力してください" style="width: 250px;" />
+
+<ul id="result">
+</ul>
 
 <div class="row mt-5 d-flex">
 	<%= paginate @books %>
@@ -10,3 +15,35 @@
 		</div>
 	<% end %>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function(){
+$(document).on('keyup', '#form', function(e){
+  e.preventDefault();
+	var input = $.trim($(this).val());
+	
+	if(input.length != 0){
+  
+  $.ajax({
+    url: '/books/search',
+		type: 'GET',
+    data: ('keyword=' + input),
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+	})
+		
+  .done(function(data){
+    $('#result').find('a').remove();
+    $('#result').find('br').remove();
+    $(data).each(function(i, book){
+			$('#result').append(`<a href="/books/${book.id}">` + book.title + `</a></br>`)
+		});
+	})
+
+	}
+
+});
+});
+
+</script>

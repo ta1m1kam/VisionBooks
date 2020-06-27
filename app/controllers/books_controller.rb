@@ -11,6 +11,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.order(:title).page params[:page]
+    @books_count = Book.all.count
   end
 
   def show
@@ -42,6 +43,13 @@ class BooksController < ApplicationController
     Book.find(params[:id]).destroy
     flash[:success] = 'Book deleted'
     redirect_to books_url
+  end
+
+  def search
+    @books = Book.where('title LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.json { render 'index', json: @books }
+    end
   end
 
   private
