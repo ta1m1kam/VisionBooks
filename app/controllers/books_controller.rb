@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.where('title LIKE(?)', "%#{params[:keyword]}%")
+    @books = Book.where(['title LIKE(?) OR author LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%"])
     respond_to do |format|
       format.json { render 'index', json: @books }
     end

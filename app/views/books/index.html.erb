@@ -1,5 +1,6 @@
-<p>全書籍数:<%= @books_count %></p>
-<input class="form-control mr-sm-2" type="form" id="form" placeholder="Search" aria-label="Search" style="width: 200px;">
+
+<p class="text-center mt-5">全書籍数 : <%= @books_count %></p>
+<input class="form-control mr-sm-2" type="form" id="form" placeholder="Search :  title or author" aria-label="Title or Author" style="width: 200px;">
 <ul id="result">
 </ul>
 
@@ -36,7 +37,7 @@ $(document).on('keyup', '#form', function(e){
     $('#result').find('a').remove();
     $('#result').find('br').remove();
     $(data).each(function(i, book){
-			$('#result').append(`<a href="/books/${book.id}">` + book.title + `</a></br>`)
+			$('#result').append(`<a href="/books/${book.id}">` + book.title + ' - ' + book.author + `</a></br>`)
 		});
 	})
 
