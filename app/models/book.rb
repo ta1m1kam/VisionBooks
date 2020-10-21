@@ -3,5 +3,5 @@
 class Book < ApplicationRecord
   belongs_to :place
 
-  paginates_per 20
+  paginates_per 16
 end

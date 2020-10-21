@@ -1,16 +1,19 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <h1 class="text-center mt-5">Log in</h1>
     <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
+      <%= f.label :email, class: 'bmd-label-floating' %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <div class="text-center">
+      <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
+      </div>
+
     <% end %>
 
-    <h2>New user? <%= link_to "Sign up now!", signup_path %></h2>
+    <h4 class="text-center mt-5">New user?   <span style="font-size:1.3em;" class="text-primary"><%= link_to "Sign up!", signup_path %></span></h4>
   </div>
 </div>

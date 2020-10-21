@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
+  get 'books/index'
+  get 'books/new'
   root 'static_pages#home'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -10,6 +12,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/about', to: 'static_pages#about'
-  resources :books
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
   resources :users
 end

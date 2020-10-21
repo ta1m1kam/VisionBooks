@@ -1,12 +1,65 @@
 
+<p class="text-center mt-5">全書籍数 : <%= @books_count %></p>
+<input class="form-control mr-sm-2" type="form" id="form" placeholder="Search :  title or author" aria-label="Title or Author" style="width: 200px;">
+<ul id="result">
+</ul>
+
 <div class="row mt-5 d-flex">
 	<%= paginate @books %>
 	<% @books.each do |book| %>
 		<div class="book text-center">
-			<%= link_to book_path(book) do %>
-				<img src="<%= book.image_url %>" alt="">
-				<p><strong><%= book.title %></strong></p>
-			<% end %>
+			<div class="bookcontainer">
+          <a href="/books/<%= book.id %>"><img src="<%= book.image_url %>" onError="this.onerror=null;this.src='/noimage.png';" height="170"/></a>
+          <p><%= link_to book.title, book %></p>
+        </div>
 		</div>
 	<% end %>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function(){
+$(document).on('keyup', '#form', function(e){ 
+  e.preventDefault();
+	var input = $.trim($(this).val());
+	
+	if(input.length != 0){
+  
+  $.ajax({
+    url: '/books/search',
+		type: 'GET',
+    data: ('keyword=' + input),
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+	})
+		
+  .done(function(data){
+    $('#result').find('a').remove();
+    $('#result').find('br').remove();
+    $(data).each(function(i, book){
+			$('#result').append(`<a href="/books/${book.id}">` + book.title + ' - ' + book.author + `</a></br>`)
+		});
+	})
+
+	}else{
+
+    $.ajax({
+    url: '/books/search',
+		type: 'GET',
+    data: ('keyword=' + input),
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+	})
+		
+  .done(function(data){
+    $('#result').find('a').remove();
+    $('#result').find('br').remove();
+	})
+
+  }
+
+});
+});
+
+</script>

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $("#book_publishdate").val(data.items[0].volumeInfo.publishedDate);
         $("#book_description").text(data.items[0].volumeInfo.description);
         $("#book_thumbnail").html('<img src=\"' + data.items[0].volumeInfo.imageLinks.smallThumbnail + '\" />');
-        $("#book_image_name").val(data.items[0].volumeInfo.imageLinks.smallThumbnail);
+        $("#book_image_url").val(data.items[0].volumeInfo.imageLinks.smallThumbnail);
         $("#book_publisher").val(data.items[0].volumeInfo.publisher);
         $("#book_pagecount").val(data.items[0].volumeInfo.pageCount);
         $("#book_textshippet").val(data.items[0].searchInfo.textSnippet);
