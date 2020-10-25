@@ -4,8 +4,9 @@
 <ul id="result">
 </ul>
 
+<%= paginate @books %>
+
 <div class="row mt-5 d-flex">
-	<%= paginate @books %>
 	<% @books.each do |book| %>
 		<div class="book text-center">
 			<div class="bookcontainer">
