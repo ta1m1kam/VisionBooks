@@ -4,7 +4,7 @@
   <%= form_with model: @book ,local: true do |f| %>
 　　　　<div class="form-group">
 				<%= f.label :last_rental, class: 'bmd-label-floating' %>
-				<%= f.text_field :last_rental , value: @user.name%>
+				<%= f.text_field :last_rental, value: @user.name, class: 'form-control text-center'%>
 			</div>
 　　　　<%= f.submit "借りる", class: "btn btn-primary" %>
 　<% end %>
