@@ -30,11 +30,13 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    
   end
 
   def update
     @user = current_user
     @book = Book.find(params[:id])
+    @book.image_url = @book.picture.url if @book.picture?
     if @book.update(book_params)
       flash[:success] = 'Information updated'
       redirect_to @book
@@ -60,7 +62,7 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :isbn, :image_url, :publish_date, :last_rental, :updated_at,
-                                 :publisher, :page_count, :textship, :description, :place_id)
+                                 :publisher, :page_count, :textship, :description, :place_id, :picture)
   end
 
   def user_params
