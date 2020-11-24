@@ -12,11 +12,13 @@ class BooksController < ApplicationController
   def index
     @books = Book.order(:title).page params[:page]
     @books_count = Book.all.count
+    
   end
 
   def show
     @book = Book.find(params[:id])
     @user = current_user
+    @book.image_url = @book.picture.url if @book.picture?
   end
 
   def create
@@ -30,7 +32,12 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    
+    @book.image_url = @book.picture.url if @book.picture?
+  end
+
+  def edit_detail
+    @book = Book.find(params[:id])
+    @book.image_url = @book.picture.url if @book.picture?
   end
 
   def update
@@ -41,7 +48,18 @@ class BooksController < ApplicationController
       flash[:success] = 'Information updated'
       redirect_to @book
     else
-      render 'show'
+      render 'edit'
+    end
+  end
+
+  def update_detail
+    @book = Book.find(params[:id])
+    @book.image_url = @book.picture.url if @book.picture?
+    if @book.update(book_params)
+      flash[:success] = 'Picture updated'
+      redirect_to edit_book_path
+    else
+      render 'edit'
     end
   end
 

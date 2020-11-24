@@ -3,26 +3,20 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="text-center mt-5">書籍登録</h1>
-		<%= render partial: 'isbn_reader' %>
+		<h1 class="text-center mt-5">書籍編集</h1>
+    <div class="text-center mt-4 mb-4">
+    <img src="<%= @book.image_url %>" alt=""　height="130">
+    </div>
 		<%= form_with model: @book ,local: true do |f| %>
-			<div class="search_book">
-				<div class="search_title">
-					<label>書籍名</label>
-					<input type="text" id="search_title">
-					<input class="btn btn-danger" type="button" id="title_search_button" value="検索">
-				</div>
-				<div class="search_isbn">
-					<label>Isbn</label>
-					<%= f.number_field :isbn %>
-					<input class="btn btn-danger" type="button" id="isbn_search_button" value="検索">
-				</div>
-			</div>
-
+			<div class="text-center form-group">
+			　<%= f.label :picture, class: 'bmd-label-floating' %>
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+      </div>
 			<div class="form-group">
 				<%= f.label :place_id , class: 'bmd-label-floating' %>
 				<%= f.collection_select :place_id, Place.all, :id, :name, prompt:true, class: 'form-control' %>
 			</div>
+			
 			<div class="form-group">
 				<%= f.label :title, class: 'bmd-label-floating' %>
 				<%= f.text_field :title, class: 'form-control' %>
@@ -43,7 +37,6 @@
 				<%= f.label :description, class: 'bmd-label-floating' %>
 				<%= f.text_area :description, class: 'form-control' %>
 			</div>
-			
 			<div class="form-group">
 				<div id="book_thumbnail"></div>
 				<%= f.text_area :image_url, class: 'form-control' %>
@@ -53,8 +46,17 @@
 				<%= f.text_area :textship, class: 'form-control' %>
 			</div>
 
-			<%= f.submit "Register New Book", class: "btn btn-primary" %>
+			<%= f.submit "Save Changes", class: "btn btn-primary" %>
 		<% end %>
+
+		<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
 	</div>
 </div>
 

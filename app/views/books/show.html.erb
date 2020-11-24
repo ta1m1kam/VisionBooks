@@ -54,5 +54,7 @@
   </tbody>
 </table>
 <%= link_to "編集", edit_book_path(@book) %> |
+<%= link_to "画像更新", book_path(@book) %> |
 <%= link_to "削除", @book, method: :delete,
                                   data: { confirm: "You sure?" } %>
+

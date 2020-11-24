@@ -17,5 +17,12 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :books, :only => [:index, :show, :edit, :update] do
+    member do
+     #追加したeditとupdateアクション
+      get 'edit_detail'
+      patch 'update_detail'
+    end
+end
   resources :users
 end
