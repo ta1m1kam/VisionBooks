@@ -55,7 +55,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.image_url = @book.picture.url if @book.picture?
     if @book.update(book_params)
-      flash[:success] = 'Picture updated'
+      flash[:danger] = 'Please save change'
       redirect_to edit_book_path
     else
       render 'edit'

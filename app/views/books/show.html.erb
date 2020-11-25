@@ -6,7 +6,11 @@
 				<%= f.label :last_rental, class: 'bmd-label-floating' %>
 				<%= f.text_field :last_rental, value: @user.name, class: 'form-control text-center'%>
 			</div>
-　　　　<%= f.submit "借りる　/　画像更新", class: "btn btn-primary text-center" %>
+      <div class="form-row text-center">
+      <div class="col-12">
+      <%= f.submit "借りる", class: "btn btn-outline-primary" %>
+      </div>
+      </div>
 　<% end %>
 </div>
 <table class="table">
@@ -53,8 +57,10 @@
     </tr>
   </tbody>
 </table>
-<%= link_to "編集", edit_book_path(@book) %> |
-<%= link_to "画像更新", book_path(@book) %> |
-<%= link_to "削除", @book, method: :delete,
+<div class="text-center mt-4 mb-4">
+<%= link_to "編集", edit_book_path(@book), class: "btn btn-outline-dark" %> | 
+<%= link_to "削除", @book, class: "btn btn-outline-dark", method: :delete,
                                   data: { confirm: "You sure?" } %>
+ 
+</div>           
 

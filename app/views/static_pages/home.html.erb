@@ -6,6 +6,6 @@
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <a href="/books/index" class="btn btn-raised btn-info" role="button" aria-pressed="true">書籍一覧</a>
-    <a href="/books/new" class="btn btn-raised btn-success" role="button" aria-pressed="true">書籍登録</a>
+    <%= link_to '書籍登録', new_book_path, data: {"turbolinks" => false}, class: 'btn btn-raised btn-success' %>
   </div>
 </div>
