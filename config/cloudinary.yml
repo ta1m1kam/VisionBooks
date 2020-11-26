@@ -1,0 +1,11 @@
+production:
+
+cloud_name: "vision-picture"
+
+api_key: ENV['157621918495235']
+
+api_secret: ENV['DJNWsXi9-t1XWc4xjXzHmC_QXQQ']
+
+secure: true
+
+cdn_subdomain: true
