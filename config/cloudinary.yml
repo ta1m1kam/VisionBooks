@@ -1,11 +1,18 @@
+development:
+  cloud_name: ENV['CLOUDINARY_CLOUD_NAME']
+  api_key: ENV['CLOUDINARY_API_KEY']
+  api_secret: ENV['CLOUDINARY_API_SECRET']
+  enhance_image_tag: true
+  static_image_support: false
 production:
-
-cloud_name: "vision-picture"
-
-api_key: ENV['157621918495235']
-
-api_secret: ENV['DJNWsXi9-t1XWc4xjXzHmC_QXQQ']
-
-secure: true
-
-cdn_subdomain: true
+  cloud_name: ENV['CLOUDINARY_CLOUD_NAME']
+  api_key: ENV['CLOUDINARY_API_KEY']
+  api_secret: ENV['CLOUDINARY_API_SECRET']
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: ENV['CLOUDINARY_CLOUD_NAME']
+  api_key: ENV['CLOUDINARY_API_KEY']
+  api_secret: ENV['CLOUDINARY_API_SECRET']
+  enhance_image_tag: true
+  static_image_support: false
