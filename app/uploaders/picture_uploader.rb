@@ -16,7 +16,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   
   process resize_to_fit: [200, 400]
 
-  storage :file
+  #torage :file
 
   # storage :fog
 
