@@ -5,7 +5,6 @@
 	<div class="col">
 		<h1 class="text-center mt-5">書籍編集</h1>
     <div class="text-center mt-4 mb-4">
-		<%= cl_image_tag @book.image_url, alt: "", height: "130"%>
     <img src="<%= @book.image_url %>" alt=""　height="130">
     </div>
 		<%= form_with model: @book, url: update_detail_book_path(@book), local: true do |f| %>
