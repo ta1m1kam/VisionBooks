@@ -8,47 +8,43 @@
 			</div>
       <div class="form-row text-center">
       <div class="col-12">
-      <%= f.submit "借りる", class: "btn btn-outline-primary" %>
+      <%= f.submit "Rental", class: "btn btn-outline-primary" %>
       </div>
       </div>
 　<% end %>
 </div>
 <table class="table">
-　<thread>
-    <th scope="col">項目</th>
-    <th scope="col">内容</th>
-  </thread>
   <tbody>
     <tr>
-      <th scope="row">最後に借りた人</th>
+      <th scope="row">Last rental</th>
       <td><%= @book.last_rental %></td>
     </tr>
     <tr>
-      <th scope="row">更新日時</th>
+      <th scope="row">Updated at</th>
       <td><%= @book.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
     </tr>
     <tr>
-      <th scope="row">場所</th>
+      <th scope="row">Place</th>
       <td><%= @book.place.name %></td>
     </tr>
     <tr>
-      <th scope="row">著者</th>
+      <th scope="row">Author</th>
       <td><%= @book.author %></td>
     </tr>
     <tr>
-      <th scope="row">説明</th>
+      <th scope="row">Description</th>
       <td><%= @book.description %></td>
     </tr>
     <tr>
-      <th scope="row">出版社</th>
+      <th scope="row">Publisher</th>
       <td><%= @book.publisher %></td>
     </tr>
     <tr>
-      <th scope="row">出版日</th>
+      <th scope="row">Publish_date</th>
       <td><%= @book.publish_date %></td>
     </tr>
     <tr>
-      <th scope="row">ページ数</th>
+      <th scope="row">Page count</th>
       <td><%= @book.page_count %></td>
     </tr>
     <tr>
@@ -58,8 +54,8 @@
   </tbody>
 </table>
 <div class="text-center mt-4 mb-4">
-<%= link_to "編集", edit_book_path(@book), class: "btn btn-outline-dark" %> | 
-<%= link_to "削除", @book, class: "btn btn-outline-dark", method: :delete,
+<%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-dark" %> | 
+<%= link_to "Delete", @book, class: "btn btn-outline-dark", method: :delete,
                                   data: { confirm: "You sure?" } %>
  
 </div>           

@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="text-center mt-5">書籍編集</h1>
+		<h1 class="text-center mt-5">Edit</h1>
     <div class="text-center mt-4 mb-4">
     <img src="<%= @book.image_url %>" alt=""　height="130">
     </div>
@@ -20,7 +20,6 @@
       </div>
 　　　 </div>
 　  <% end %>
-
 		<%= form_with model: @book ,local: true do |f| %>			
 			<div class="form-group">
 				<%= f.label :place_id , class: 'bmd-label-floating' %>
@@ -67,7 +66,7 @@
   $('#micropost_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
+      alert('Maximum file size is 2MB. Please choose a smaller file.');
     }
   });
 </script>

@@ -3,19 +3,19 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="text-center mt-5">書籍登録</h1>
+		<h1 class="text-center mt-5">Registration</h1>
 		<%= render partial: 'isbn_reader' %>
 		<%= form_with model: @book ,local: true do |f| %>
 			<div class="search_book">
 				<div class="search_title">
-					<label>書籍名</label>
+					<label>book name</label>
 					<input type="text" id="search_title">
-					<input class="btn btn-danger" type="button" id="title_search_button" value="検索">
+					<input class="btn btn-danger" type="button" id="title_search_button" value="Search">
 				</div>
 				<div class="search_isbn">
 					<label>Isbn</label>
 					<%= f.number_field :isbn %>
-					<input class="btn btn-danger" type="button" id="isbn_search_button" value="検索">
+					<input class="btn btn-danger" type="button" id="isbn_search_button" value="Search">
 				</div>
 			</div>
 
