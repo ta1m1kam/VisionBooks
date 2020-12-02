@@ -17,6 +17,8 @@
 	<% end %>
 </div>
 
+<%= paginate @books %>
+
 <script>
 $(document).on('turbolinks:load', function(){
 $(document).on('keyup', '#form', function(e){ 
