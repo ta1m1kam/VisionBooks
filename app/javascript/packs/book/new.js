@@ -1,10 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('#isbn_search_button').on('click', function(){
+  $('#isbn_search_button').on('click', function () {
     const isbn = $("#book_isbn").val();
     const url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
-    $.getJSON(url, function(data) {
-      if(!data.totalItems) {
+    $.getJSON(url, function (data) {
+      if (!data.totalItems) {
         $("#isbn").val("");
         $("#book_title").text("エラーです");
         $("#book_author").text("");
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $("#message").html('<p class="bg-warning" id="warning">該当する書籍がありません。</p>');
         $('#message > p').fadeOut(3000);
       } else {
-  // 該当書籍が存在した場合、JSONをパースして入力項目のデータを取得する
+        // 該当書籍が存在した場合、JSONをパースして入力項目のデータを取得する
         $("#book_title").val(data.items[0].volumeInfo.title);
         $("#book_author").val(data.items[0].volumeInfo.authors[0]);
         $("#book_publishdate").val(data.items[0].volumeInfo.publishedDate);
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  $('#title_search_button').on('click', function(){
+  $('#title_search_button').on('click', function () {
     const title = $("#search_title").val();
     const url = "https://www.googleapis.com/books/v1/volumes?q=" + title;
-    $.getJSON(url, function(data) {
-      if(!data.totalItems) {
+    $.getJSON(url, function (data) {
+      if (!data.totalItems) {
         $("#isbn").val("");
         $("#book_title").text("エラーです");
         $("#book_author").text("");
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $("#message").html('<p class="bg-warning" id="warning">該当する書籍がありません。</p>');
         $('#message > p').fadeOut(3000);
       } else {
-  // 該当書籍が存在した場合、JSONをパースして入力項目のデータを取得する
+        // 該当書籍が存在した場合、JSONをパースして入力項目のデータを取得する
         console.log(data);
         bookInfo = data.items[0].volumeInfo;
         if (itemExists(bookInfo.title)) {
@@ -86,19 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   Quagga.init({
-    inputStream : {
-      name : "Live",
-      type : "LiveStream",
+    inputStream: {
+      name: "Live",
+      type: "LiveStream",
       constraints: {
         width: 452,
         height: 350,
       },
       target: document.querySelector('#interactive')    // Or '#yourElement' (optional)
     },
-    decoder : {
-      readers : ["ean_reader"]
+    decoder: {
+      readers: ["ean_reader"]
     }
-  }, function(err) {
+  }, function (err) {
     if (err) {
       console.log(err);
       return
@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Quagga.onDetected(success => {
     const code = success.codeResult.code;
-    if(calc(code)) {
+    if (calc(code)) {
+      alert(code);
       $("#book_isbn").val(code);
     }
   })
