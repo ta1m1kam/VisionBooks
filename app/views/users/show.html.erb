@@ -1,6 +1,21 @@
-<h1>
-  <%= @user.name %>
-</h1>
-<h2>
-  <%= @user.email %>
-</h2>
+
+
+<div class="container home">
+  <div class="jumbotron">
+  <h1 class="display-4">Welcome back</h1>
+    <h1 class="h5">Name：<span style="font-size:1.5em;" class="text-primary"><%= @user.name %></span></h1>
+    <h1 class="h5">Email：<span style="font-size:1.5em;" class="text-primary"><%= @user.email %></span></h1>
+    <hr class="my-4">
+    <h1 class="display-4">Let's rental !</h1>
+  
+    <%= link_to 'list', books_path, class: 'btn btn-raised btn-info' %>
+    <%= link_to 'registration', new_book_path, class: 'btn btn-raised btn-success' %>
+  
+    <!--
+    <h1 href="../../books/index" class="btn btn-raised btn-info" role="button" aria-pressed="true">list</h1>
+    <h1 href="../../books/new" class="btn btn-raised btn-success" role="button" aria-pressed="true">registration</h1>
+    -->
+    
+    </ul>
+  </div>
+</div>

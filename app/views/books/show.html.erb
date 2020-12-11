@@ -1,35 +1,50 @@
 <h1 class="mt-5 text-center"><%= @book.title %></h1>
 <div class="text-center mt-4 mb-4">
-  <img src="<%= @book.image_url %>" alt="">
+  <img height="160" src="<%= @book.image_url %>"　onError="this.onerror=null;this.src='/noimage.png';%>">
+  <%= form_with model: @book ,local: true do |f| %>
+　　　　<div class="form-group">
+				<%= f.label :last_rental, class: 'bmd-label-floating' %>
+				<%= f.text_field :last_rental, value: @user.name, class: 'form-control text-center'%>
+			</div>
+      <div class="form-row text-center">
+      <div class="col-12">
+      <%= f.submit "Rental", class: "btn btn-outline-primary" %>
+      </div>
+      </div>
+　<% end %>
 </div>
 <table class="table">
-  <thread>
-    <th scope="col">項目</th>
-    <th scope="col">内容</th>
-  </thread>
   <tbody>
     <tr>
-      <th scope="row">場所</th>
+      <th scope="row">Last rental</th>
+      <td><%= @book.last_rental %></td>
+    </tr>
+    <tr>
+      <th scope="row">Updated at</th>
+      <td><%= @book.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+    </tr>
+    <tr>
+      <th scope="row">Place</th>
       <td><%= @book.place.name %></td>
     </tr>
     <tr>
-      <th scope="row">著者</th>
+      <th scope="row">Author</th>
       <td><%= @book.author %></td>
     </tr>
     <tr>
-      <th scope="row">説明</th>
+      <th scope="row">Description</th>
       <td><%= @book.description %></td>
     </tr>
     <tr>
-      <th scope="row">出版社</th>
+      <th scope="row">Publisher</th>
       <td><%= @book.publisher %></td>
     </tr>
     <tr>
-      <th scope="row">出版日</th>
+      <th scope="row">Publish_date</th>
       <td><%= @book.publish_date %></td>
     </tr>
     <tr>
-      <th scope="row">ページ数</th>
+      <th scope="row">Page count</th>
       <td><%= @book.page_count %></td>
     </tr>
     <tr>
@@ -38,3 +53,10 @@
     </tr>
   </tbody>
 </table>
+<div class="text-center mt-4 mb-4">
+<%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-dark" %> | 
+<%= link_to "Delete", @book, class: "btn btn-outline-dark", method: :delete,
+                                  data: { confirm: "Delete?" } %>
+ 
+</div>           
+

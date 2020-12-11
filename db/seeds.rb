@@ -11,5 +11,6 @@
 if Place.all.empty?
   Place.create(name: '実験ブース本棚')
   Place.create(name: '学生ブース')
-  Place.create(name: '溝上先生部')
+  Place.create(name: '溝上先生部屋')
+  Place.create(name: 'その他→Textship')
 end

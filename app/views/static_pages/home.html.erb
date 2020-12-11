@@ -1,11 +1,11 @@
 <div class="container home">
   <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
+    <h1 class="display-4">Vision Equipment!</h1>
     <%= link_to "Log in now!", login_path, class: "btn btn-lg btn-primary" %>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <button type="button" class="btn btn-raised btn-success">書籍登録</button>
-    <button type="button" class="btn btn-raised btn-info">書籍一覧</button>
+    <a href="/books/index" class="btn btn-raised btn-info" role="button" aria-pressed="true">list</a>
+    <%= link_to 'registration', new_book_path, data: {"turbolinks" => false}, class: 'btn btn-raised btn-success' %>
   </div>
 </div>

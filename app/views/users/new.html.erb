@@ -1,18 +1,20 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <h1 class="text-center mt-5">Sign up</h1>
     <%= form_for(@user, url: signup_path) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
+      <%= f.label :name, class: 'bmd-label-floating' %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, class: 'bmd-label-floating' %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <div class="text-center">
+      <%= f.submit "Create my account", class: "btn btn-outline-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
