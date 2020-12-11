@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.order(:title).page params[:page]
+    @books = Book.order(updated_at: "DESC").page params[:page]
     @books_count = Book.all.count
   end
 
